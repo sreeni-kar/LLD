@@ -1,0 +1,8 @@
+Requirements
+
+- Multilevel Parking lot
+- Multiple category of parking space
+- Multiple entry and exit (adds an interesting case of concurrency)
+- Should not allow more vehicles than allocated space for each category
+- Charge should be hourly basis
+- Display available number of parking for each category at entry itself
