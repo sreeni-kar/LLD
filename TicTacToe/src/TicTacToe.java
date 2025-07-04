@@ -62,17 +62,17 @@ public class TicTacToe {
         //First player always puts 'X' and second player always puts 'O'
         char ch = player.getId() == player1.getId() ? 'X' : 'O';
 
-        if (ch == 'X' && numCrosses > numCircles) {
+        if (isCross(ch) && numCrosses > numCircles) {
             System.out.println("NOT YOUR TURN, LET PLAYER 2 PLAY THEIR TURN!!!!");
             return;
         }
 
-        if (ch == 'O' && numCircles == numCrosses) {
+        if (isCircle(ch) && numCircles == numCrosses) {
             System.out.println("NOT YOUR TURN, LET PLAYER 1 PLAY THEIR TURN!!!!");
             return;
         }
 
-        if (ch == 'X') {
+        if (isCross(ch)) {
             numCrosses++;
         } else {
             numCircles++;
@@ -86,8 +86,8 @@ public class TicTacToe {
             isFinished = true;
 
             System.out.println("GAME HAS BEEN COMPLETED!!!");
-            PlayerProfile winner = ch == 'X' ? player1 : player2;
-            PlayerProfile loser = ch == 'X' ? player2 : player1;
+            PlayerProfile winner = isCross(ch) ? player1 : player2;
+            PlayerProfile loser = isCross(ch) ? player2 : player1;
             System.out.println("WINNER IS " + winner.getName());
 
             globalGameStatistics.updateWin(winner);
@@ -105,14 +105,22 @@ public class TicTacToe {
 
     }
 
+    private boolean isCross(char ch){
+        return ch == 'X';
+    }
+
+    private boolean isCircle(char ch){
+        return ch == 'O';
+    }
+
     private void updateTrackers(int i, int j, char ch) {
-        rowTracker[i][ch == 'X' ? 0 : 1]++;
-        columnTracker[j][ch == 'X' ? 0 : 1]++;
+        rowTracker[i][isCross(ch) ? 0 : 1]++;
+        columnTracker[j][isCross(ch) ? 0 : 1]++;
         if (i == j) {
-            mainDiagonalTracker[0][ch == 'X' ? 0 : 1]++;
+            mainDiagonalTracker[0][isCross(ch) ? 0 : 1]++;
         }
         if (i + j == board.length - 1) {
-            antiDiagonalTracker[0][ch == 'X' ? 0 : 1]++;
+            antiDiagonalTracker[0][isCross(ch) ? 0 : 1]++;
         }
     }
 
