@@ -1,0 +1,5 @@
+Requirements
+-> Board should be NxN (Configurable)
+-> Player profile required
+-> Should be extensible for statistics collection
+-> Ranking of players can be done based on win percentage
