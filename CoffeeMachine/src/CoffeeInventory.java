@@ -42,7 +42,7 @@ public class CoffeeInventory {
         }
     }
 
-    synchronized public boolean checkIngredientsAvailability(Coffee coffee){
+    public boolean checkIngredientsAvailability(Coffee coffee){
         CoffeeIngredients coffeeIngredients = coffee.getCoffeeIngredients();
         return storageQuantity.getSugar() >= coffeeIngredients.getSugar() && storageQuantity.getBeans() >= coffeeIngredients.getBeans() && storageQuantity.getMilk() >= coffeeIngredients.getMilk();
     }
